@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 from flask import Blueprint, jsonify, abort, make_response, request
 
 class Car:
