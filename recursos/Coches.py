@@ -46,13 +46,13 @@ def crearCoche():
 	fechaFabricacion = request.json.get('fechaFabricacion')
     tipoAveria = request.json.get('tipoAveria')
 
-	coche = Coche(regId, matricula, marca, fechaFabricacion, tipoAveria)
+	coche = Coche(idCoche, matricula, marca, fechaFabricacion, tipoAveria)
     listaCoches.append(coche)
 
-    return jsonify({'car':car}),201
+    return jsonify({'coche': coche}),201
 
 #Elimina un coche existente
-@talleres_api.route('/recursos/talleres/<int:id>/', methods=['DELETE'])
+@coches_api.route('/recursos/coches/<int:id>/', methods=['DELETE'])
 def borrarCoche(id):
 	coche = [coche for coche in listaCoches if coche['idCoche'] == id]
 	listaCoches.remove(coche[0])
