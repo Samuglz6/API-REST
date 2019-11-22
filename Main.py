@@ -12,7 +12,7 @@ from flask.json import JSONEncoder
 
 class MyJSONEncoder(JSONEncoder):
     def default(self, obj):
-        if isinstance(obj, Averias):
+        if isinstance(obj, Averia):
             return {
                     'idAveria': obj.idAveria,
                     'descripcion': obj.descripcion,
@@ -26,14 +26,14 @@ class MyJSONEncoder(JSONEncoder):
 					'fechaFabricacion': obj.fechaFabricacion,
 					'tipoAveria': obj.tipoAveria
             	   }
-        if isinstance(obj, Clientes):
+        if isinstance(obj, Cliente):
              return {
 					'idCliente':obj.idCliente,
                 	'nombre': obj.nombre,
 					'domicilio': obj.domicilio,
                     'fechaNacimiento': obj.fechaNacimiento
         		    }
-        if isinstance(obj, Mecanicos):
+        if isinstance(obj, Mecanico):
             return{
                    'idMecanico': obj.idMecanico,
                    'nombre': obj.nombre,
@@ -46,8 +46,8 @@ app.json_encoder = MyJSONEncoder
 # Blueprint
 app.register_blueprint(averias_api)
 app.register_blueprint(coches_api)
-app.register_blueprint(mecanicos_api)
 app.register_blueprint(clientes_api)
+app.register_blueprint(mecanicos_api)
 
 if __name__ == '__main__':
     app.run(debug=True)
