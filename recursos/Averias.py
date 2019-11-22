@@ -11,10 +11,10 @@ class Averia:
 
 ####################################################################
 # Example:
-listaAverias = [ Averia(1, '1234ABC', 1),
-                 Averia(2, '8473LSM', 4),
-                 Averia(3, '7973KDD', 3),
-	     	     Averia(4, '4441NFC', 2)]
+listaAverias = [ Averia(1, 'Sistema de anticontaminacion defectuoso', 1),
+                 Averia(2, 'Fallo del cableado electrico', 4),
+                 Averia(3, 'Fallo en el ABS', 3),
+	     	     Averia(4, 'Filtro de aceite en malas condiciones', 2)]
 ####################################################################
 
 averias_api = Blueprint('averias_api', __name__)
