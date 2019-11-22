@@ -4,7 +4,9 @@
 from flask import Flask
 
 from recursos.Coches import coches_api, Coche
-from recursos.Talleres import talleres_api, Taller
+from recursos.Averias import averias_api, Averia
+from recursos.Clientes import clientes_api, Cliente
+from recursos.Mecanicos import mecanicos_api, Mecanico
 
 from flask.json import JSONEncoder
 
