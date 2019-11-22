@@ -25,7 +25,7 @@ def obtenerClientes():
 	return jsonify({'Clientes': listaClientes})
 
 #Devolver los datos de un Cliente segun el id indicado
-@clientes_api.route('/recursos/clientes<int:idCliente>/', methods=['GET'])
+@clientes_api.route('/recursos/clientes/<int:idCliente>/', methods=['GET'])
 def obtenerUnCliente(idCliente):
     for cliente in listaClientes:
 	    if cliente.idCliente == idCliente:
