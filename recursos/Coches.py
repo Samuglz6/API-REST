@@ -17,7 +17,6 @@ listaCoches = [ Coche(1, '1234ABC', 'Volvo', '2010', 1),
                 Coche(2, '8473LSM', 'Toyota', '2012', 4),
                 Coche(3, '7973KDD', 'Seat', '2015', 3),
 	     	    Coche(4, '4441NFC', 'Ranault', '2018', 2)]
-
 ####################################################################
 
 coches_api = Blueprint('coches_api', __name__)
