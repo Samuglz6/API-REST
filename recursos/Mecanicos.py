@@ -10,9 +10,8 @@ class Mecanico:
 
 ####################################################################
 # Example:
-listaMecanicos = [ Mecanico(1, 'Pepe'),
-                   Mecanico(2, 'Beka'),
-                   Mecanico(3, 'Samuel')]
+listaMecanicos = [ Mecanico(1, 'Beka'),
+                   Mecanico(2, 'Samuel')]
 ####################################################################
 
 mecanicos_api = Blueprint('mecanicos_api', __name__)
