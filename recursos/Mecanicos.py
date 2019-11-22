@@ -43,6 +43,6 @@ def crearMecanico():
     return jsonify({'mecanico': mecanico}),201
 
 #Elimina un mecanico
-@coches_api.route('/recursos/mecanicos/<int:id>/', methods=['DELETE'])
+@mecanicos_api.route('/recursos/mecanicos/<int:id>/', methods=['DELETE'])
 def not_found(error):
     return make_response(jsonify({'ERROR': 'No se ha encontrado el recurso'}), 404)
