@@ -4,10 +4,9 @@
 from flask import Blueprint, jsonify, abort, make_response, request
 
 class Taller:
-
-	def __init__(self, idTaller, nombreTaller, direccion, abierto, marca):
-		self.idTaller = idTaller
-		self.nombreTaller = nombreTaller
+    def __init__(self, idTaller, nombreTaller, direccion, abierto, marca):
+        self.idTaller = idTaller
+        self.nombreTaller = nombreTaller
         self.direccion = direccion
         self.abierto = abierto
         self.marca = marca
@@ -26,34 +25,36 @@ talleres_api = Blueprint('talleres_api', __name__)
 #Mostrar todos los talleres
 @talleres_api.route('/recursos/talleres/', methods=['GET'])
 def obtenerTalleres():
-	return jsonify({'talleres': talleres})
+	return jsonify({'talleres': listaTalleres})
 
 #Devolver los datos de un taller segun el id indicado
 @talleres_api.route('/recursos/talleres/<int:idTaller>/', methods=['GET'])
 def obtenerTaller(nombreTaller):
-        for taller in talleres:
-                if taller.get('idTaller') == idTaller:
-                        return jsonify({'taller':taller})
-        abort(404)
+    for taller in talleres:
+        if taller.get('idTaller') == idTaller:
+            return jsonify({'taller':taller})
+    abort(404)
 
 #Añade un nuevo taller
 @talleres_api.route('/recursos/talleres/', methods=['POST'])
 def crearTaller():
-        if not request.json or not 'nombreTaller' in request.json:
-                abort(404)
-		id = talleres[-1].get('id')+1
-		nombreTaller = request.json.get('nombreTaller')
-		direccion = request.json.get('direccion')
-		marca = request.json.get('marca')
-        abierto = False
-        taller = {'id': id, 'nombreTaller': nombreTaller, 'marca': marca,'abierto': abierto}
-        talleres.append(taller)
-        return jsonify({'taller':taller}),201
+    if not request.json or not 'idTaller' in request.json:
+            abort(404)
+    idTaller = listaTalleres[-1].get('idTaller')+1
+    nombreTaller = request.json.get('nombreTaller')
+    direccion = request.json.get('direccion')
+    marca = request.json.get('marca')
+    abierto = False
+
+    taller = {'idTaller': idTaller, 'nombreTaller': nombreTaller,'direccion': direccion, 'marca': marca,'abierto': abierto}
+    talleres.append(taller)
+
+    return jsonify({'taller':taller}),201
 
 #Elimina un taller existente
 @talleres_api.route('/recursos/talleres/<int:id>/', methods=['DELETE'])
 def borrarTaller(id):
-	taller = [taller for taller in talleres if taller['idTaller'] == id]
+	taller = [taller for taller in listaTalleres if taller['idTaller'] == id]
 	listaTalleres.remove(taller[0])
 	return jsonify({}), 204 # No content
 

@@ -3,23 +3,23 @@
 
 from flask import Flask
 
-from api.coches import coches_api, Coche
-from api.talleres import talleres_api, Taller
+from recursos.Coches import coches_api, Coche
+from recursos.Talleres import talleres_api, Taller
 
 from flask.json import JSONEncoder
 
 class MyJSONEncoder(JSONEncoder):
-	def default(self, obj):
-    	if isinstance(obj, Car):
-    		return {
-                	'idCoche': obj.regId,
+    def default(self, obj):
+        if isinstance(obj, Coche):
+    	    return {
+                	'idCoche': obj.idCoche,
 					'matricula': obj.matricula,
 					'marca': obj.marca,
 					'fechaFabricacion': obj.fechaFabricacion,
-					'troubleType': obj.troubleType
+					'tipoAveria': obj.tipoAveria
             	   }
-		if isinstance(obj, Taller):
-        	return {
+        if isinstance(obj, Taller):
+             return {
 					'idTaller':obj.idTaller,
                 	'nombreTaller': obj.nombreTaller,
 					'direccion': obj.direccion,
@@ -34,7 +34,6 @@ app.json_encoder = MyJSONEncoder
 # Blueprint
 app.register_blueprint(talleres_api)
 app.register_blueprint(coches_api)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
